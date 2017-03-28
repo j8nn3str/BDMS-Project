@@ -34,7 +34,7 @@ import MySQLdb, cgi, cgitb
 # Create instance of FieldStorage 
 form = cgi.FieldStorage() 
 
-# Get data from fields
+# Get data from SQL file
 with open('q1.sql', 'r') as myfile:
     query=myfile.read()
 
@@ -48,7 +48,7 @@ print """
             <label for="query-text-area">Enter some SQL</label>
 """
 
-print "<textarea required='true' id='query-text-area' name='query' type='text' class='form-control' rows='5' placeholder=''>" + query +"</textarea>"
+print """<textarea required="true" id="query-text-area" name="query" type="text" class="form-control" rows="5" placeholder="">""" + query +"""</textarea>"""
 print """
              <button type="submit" class="btn btn-primary" type="button">Execute</button>
              <a href="/" class="btn btn-default" type="button">Reset</a>
@@ -57,8 +57,8 @@ print """
     </form>
   </div> 
 """
-print """<div class='col-lg-12'"'>
-    <div class='form-group'>
+print """<div class="col-lg-12">
+    <div class="form-group">
         <label>Displaying Results for the Query</label>
         <pre>"""
 print query
@@ -85,8 +85,8 @@ headers = [header[0] for header in cursor.description]
 
 
 # print the rows and colums
-print "<div class='col-lg-12'>"
-print """<table class='table table-hover'>"""
+print """<div class="col-lg-12">"""
+print """<table class="table table-hover">"""
 print "<thead>"
 for w in range(len(headers)):
     print "<th>"
@@ -105,7 +105,8 @@ for x in range(len(data)):
     print "</tr>"
 
 print """</tbody></table>"""
-print "</div>"        
+print "</div>"
+
 
 
 
@@ -113,5 +114,5 @@ print "</div>"
 # disconnect from server
 db.close()
 
-print '</BODY>'
-print '</HTML>'
+print "</BODY>"
+print "</HTML>"
