@@ -57,15 +57,6 @@ print """
     </form>
   </div> 
 """
-print """<div class="col-lg-12">
-    <div class="form-group">
-        <label>Displaying Results for the Query</label>
-        <pre>"""
-print query
-print """
-        </pre>
-    </div>
-</div>"""
 
 
 # Open database connection

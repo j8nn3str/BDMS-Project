@@ -36,6 +36,7 @@ form = cgi.FieldStorage()
 
 # Get data from fields
 query = form.getvalue('query')
+query = query.replace("\n", "") #remove the new lines that somehow gets included in the query
 
 
 
@@ -56,15 +57,7 @@ print """
     </form>
   </div> 
 """
-print """<div class="col-lg-12">
-    <div class="form-group">
-        <label>Displaying Results for the Query</label>
-        <pre>"""
-print query
-print """
-        </pre>
-    </div>
-</div>"""
+
 
 
 # Open database connection
