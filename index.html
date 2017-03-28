@@ -6,15 +6,30 @@
 <!-- Optional theme -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
+<script src="bootstrap/js/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </HEAD>
 <BODY>
 <nav class="navbar navbar-default">
-  <div class="navbar-header"> 
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-</button>
-<a class="navbar-brand" href="/">Business Data Management</a>
-</div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Business Data Management</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Queries
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="PythonApp/q1-query.py">Query 1</a></li>
+          <li><a href="PythonApp/q2s-query.py">Query 2</a></li>
+          <li><a href="PythonApp/q3-query.py">Query 3</a></li>
+          <li><a href="PythonApp/q4-query.py">Query 4</a></li>
+          <li><a href="PythonApp/q5-query.py">Query 5</a></li>
+          <li><a href="PythonApp/q6-query.py">Query 6</a></li>                              
+        </ul>
+      </li>
+    </ul>
+  </div>
 </nav>
 
 <!-- An input form for a SQL Query -->
