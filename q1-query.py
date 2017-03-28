@@ -45,7 +45,7 @@ print """
   <div class="col-lg-12">
     <form action="query.py" method="POST">
         <div class="form-group">
-            <label for="query-text-area">Enter some SQL</label>
+            <label for="query-text-area">Find the tickers and closing prices of all stocks exchanged in 2017</label>
 """
 
 print """<textarea required="true" id="query-text-area" name="query" type="text" class="form-control" rows="5" placeholder="">""" + query +"""</textarea>"""
