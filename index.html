@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<TITLE>Index</TITLE>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</HEAD>
+<BODY>
+<nav class="navbar navbar-default">
+  <div class="navbar-header"> 
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+</button>
+<a class="navbar-brand" href="/">Business Data Management</a>
+</div>
+</nav>
+
+<!-- An input form for a SQL Query -->
+  <div class="col-lg-12">
+    <form action="PythonApp/query.py" method="POST">
+        <div class="form-group">
+            <label for="query-text-area">Enter some SQL</label>
+            <textarea required="true" id="query-text-area" name="query" type="text" class="form-control" rows="5" placeholder="SELECT * FROM WHERE"></textarea>
+            <button type="submit" class="btn btn-primary" type="button">Execute</button>
+            <button type="reset" class="btn btn-default" type="button">Reset</button>
+        </div>
+    </form>
+  </div> 
+    
+
+</BODY>
+</HTML>
