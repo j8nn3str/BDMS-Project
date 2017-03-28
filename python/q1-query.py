@@ -15,6 +15,7 @@ print '<!-- Optional theme -->'
 print '<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">'
 
 print '<!-- Latest compiled and minified JavaScript -->'
+print '<script src="bootstrap/js/jquery.min.js"></script>'
 print '<script src="bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>'
     
 print '</HEAD>'
@@ -26,6 +27,22 @@ print      '<button type="button" class="navbar-toggle collapsed" data-toggle="c
 print      '</button>'
 print      '<a class="navbar-brand" href="/">Business Data Management</a>'
 print    '</div>'
+print    '<ul class="nav navbar-nav">'
+print      '<li><a href="#">Home</a></li>'
+print      '<li class="dropdown">'
+print        '<a class="dropdown-toggle" data-toggle="dropdown" href="#">Queries'
+print        '<span class="caret"></span></a>'
+print        '<ul class="dropdown-menu">'
+print          '<li><a href="q1-query.py">Question 1</a></li>'
+print          '<li><a href="q2-query.py">Question 2</a></li>'
+print          '<li><a href="q3-query.py">Question 3</a></li>'
+print          '<li><a href="q4-query.py">Question 4</a></li>'
+print          '<li><a href="q5-query.py">Question 5</a></li>'
+print          '<li><a href="q6-query.py">Question 6</a></li> '         
+print        '</ul>'
+print      '</li>'
+print       '<li><a href="database.py">Database</a></li>'
+print    '</ul>'
 print '</nav>'
 
 
@@ -35,7 +52,7 @@ import MySQLdb, cgi, cgitb
 form = cgi.FieldStorage() 
 
 # Get data from SQL file
-with open('q1.sql', 'r') as myfile:
+with open('sql/q1.sql', 'r') as myfile:
     query=myfile.read()
 
 
