@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<TITLE>Index</TITLE>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="python/bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="python/bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="python/bootstrap/js/jquery.min.js"></script>
+<script src="python/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</HEAD>
+<BODY>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Business Data Management</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Queries
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="python/q1-query.py">Question 1</a></li>
+          <li><a href="python/q2-query.py">Question 2</a></li>
+          <li><a href="python/q3-query.py">Question 3</a></li>
+          <li><a href="python/q4-query.py">Question 4</a></li>
+          <li><a href="python/q5-query.py">Question 5</a></li>
+          <li><a href="python/q6-query.py">Question 6</a></li>          
+        </ul>
+      </li>
+      <li><a href="database.py">Database</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- An input form for a SQL Query -->
+<div class="container">
+  <form class="form-inline" action="python/db-schema.py" method="POST">
+    <div class="form-group">
+      <label for="sql-action-select">Select list (select one):</label>
+      <select class="form-control" id="sql-action-select" name="value">
+    <option selected>Choose...</option>
+    <option value="sql/initialize.sql">Create table from original dataset</option>
+    <option value="sql/append.sql">Add entries to the original dataset</option>
+    <option value="sql/drop.sql">Drop all tables from the dataset</option>
+      </select>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+</BODY>
+</HTML>
