@@ -70,7 +70,8 @@ cursor = db.cursor()
 
 # execute SQL query using execute() method.
 try:
-    cursor.execute(query,multi=True)
+    for result in cursor.execute(query,multi = True):
+        pass
 
     print """
     <div class="col-lg-12">

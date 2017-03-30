@@ -1,1 +1,1 @@
-drop tables stock, price, buynsell;
+drop table stock, price, buynsell
