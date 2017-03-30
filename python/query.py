@@ -40,7 +40,7 @@ print          '<li><a href="q5-query.py">Question 5</a></li>'
 print          '<li><a href="q6-query.py">Question 6</a></li> '         
 print        '</ul>'
 print      '</li>'
-print       '<li><a href="database.html">Database</a></li>'
+print       '<li><a href="/../database.html">Database</a></li>'
 print    '</ul>'
 print '</nav>'
 
