@@ -90,7 +90,9 @@ except mysql.connector.Error as err:
 
 
 # disconnect from server
+db.commit()
 db.close()
+
 
 print "</BODY>"
 print "</HTML>"
