@@ -1,1 +1,0 @@
-drop table price,stock,buynsell
