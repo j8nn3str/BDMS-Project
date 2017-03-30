@@ -26,10 +26,10 @@ VALUES
 CREATE TABLE IF NOT EXISTS buynsell (
         buy_or_sell varchar(4), ticker VARCHAR(10),
         date DATE, timestamp TIME,
-        value DECIMAL(13,2),  num_of_shares INT UNSIGNED
+        price DECIMAL(13,2),  num_of_shares INT UNSIGNED
  );
 INSERT INTO buynsell
-        (ticker, buy_or_sell, date, timestamp,value, num_of_shares)
+        (ticker, buy_or_sell, date, timestamp, price, num_of_shares)
 VALUES
 ("IBM", "BUY", "2017-03-20", "11:55:00", 273.00, 1100), ("IBM","BUY","2017-03-21", "10:45:00", 271.00, 2400),
 ("IBM", "SELL", "2017-03-22", "12:09:00", 270.50, 2500), ("GOOG","BUY", "2017-03-20", "12:22:00", 86.00, 2200),
