@@ -82,7 +82,7 @@ try:
 except mysql.connector.Error as err:
     print """
     <div class="col-lg-12">
-    <div class="alert alert-sudangerccess" role="alert">
+    <div class="alert alert-danger" role="alert">
     <strong>Whoops!</strong> Something went wrong.
     </div>
     </div>"""
