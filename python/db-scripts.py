@@ -45,7 +45,7 @@ print    '</ul>'
 print '</nav>'
 
 
-import MySQLdb, cgi, cgitb
+import mysql.connector, cgi, cgitb
 
 # Create instance of FieldStorage 
 form = cgi.FieldStorage() 
@@ -63,16 +63,30 @@ with open(value, 'r') as myfile:
 
 
 # Open database connection
-db = MySQLdb.connect("localhost","user","user-123","dbms_p" )
+db = mysql.connector.connect(host="localhost",user="user",password="user-123",database="dbms_p" )
 
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
 
 # execute SQL query using execute() method.
-cursor.execute(query)
+try:
+    cursor.execute(query,multi=True)
 
-# fetch all of the rows from the query
-data = cursor.fetchall ()
+    print """
+    <div class="col-lg-12">
+    <div class="alert alert-success" role="alert">
+    <strong>Success!</strong> SQL script executed with no problems!
+    </div>
+    </div>"""
+except mysql.connector.Error as err:
+    print """
+    <div class="col-lg-12">
+    <div class="alert alert-sudangerccess" role="alert">
+    <strong>Whoops!</strong> Something went wrong.
+    </div>
+    </div>"""
+
+
 
 # disconnect from server
 db.close()
