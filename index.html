@@ -2,12 +2,12 @@
 <HEAD>
 <TITLE>Index</TITLE>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="python/bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Optional theme -->
-<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link rel="stylesheet" href="python/bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
-<script src="bootstrap/js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="python/bootstrap/js/jquery.min.js"></script>
+<script src="python/bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </HEAD>
 <BODY>
 <nav class="navbar navbar-default">
@@ -20,21 +20,22 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Queries
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="PythonApp/q1-query.py">Query 1</a></li>
-          <li><a href="PythonApp/q2s-query.py">Query 2</a></li>
-          <li><a href="PythonApp/q3-query.py">Query 3</a></li>
-          <li><a href="PythonApp/q4-query.py">Query 4</a></li>
-          <li><a href="PythonApp/q5-query.py">Query 5</a></li>
-          <li><a href="PythonApp/q6-query.py">Query 6</a></li>                              
+          <li><a href="python/q1-query.py">Query 1</a></li>
+          <li><a href="python/q2s-query.py">Query 2</a></li>
+          <li><a href="python/q3-query.py">Query 3</a></li>
+          <li><a href="python/q4-query.py">Query 4</a></li>
+          <li><a href="python/q5-query.py">Query 5</a></li>
+          <li><a href="python/q6-query.py">Query 6</a></li>                              
         </ul>
       </li>
+      <li><a href="database.html">Database</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- An input form for a SQL Query -->
   <div class="col-lg-12">
-    <form action="PythonApp/query.py" method="POST">
+    <form action="python/query.py" method="POST">
         <div class="form-group">
             <label for="query-text-area">Enter some SQL</label>
             <textarea required="true" id="query-text-area" name="query" type="text" class="form-control" rows="5" placeholder="SELECT * FROM WHERE"></textarea>
