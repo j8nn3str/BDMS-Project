@@ -9,14 +9,14 @@ print '<TITLE>Index</TITLE>'
 
 # Bootstrap Scripts
 print '<!-- Latest compiled and minified CSS -->'
-print '<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">'
+print '<link rel="stylesheet" href="/../bootstrap/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">'
 
 print '<!-- Optional theme -->'
-print '<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">'
+print '<link rel="stylesheet" href="/../bootstrap/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">'
 
 print '<!-- Latest compiled and minified JavaScript -->'
-print '<script src="bootstrap/js/jquery.min.js"></script>'
-print '<script src="bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>'
+print '<script src="/../bootstrap/js/jquery.min.js"></script>'
+print '<script src="/../bootstrap/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>'
     
 print '</HEAD>'
 print '<BODY>'
@@ -28,7 +28,7 @@ print      '</button>'
 print      '<a class="navbar-brand" href="/">Business Data Management</a>'
 print    '</div>'
 print    '<ul class="nav navbar-nav">'
-print      '<li class="dropdown">'
+print      '<li class="dropdown active">'
 print        '<a class="dropdown-toggle" data-toggle="dropdown" href="#">Queries'
 print        '<span class="caret"></span></a>'
 print        '<ul class="dropdown-menu">'
@@ -45,16 +45,14 @@ print    '</ul>'
 print '</nav>'
 
 
-import MySQLdb, cgi, cgitb
+import mysql.connector, cgi, cgitb
 
 # Create instance of FieldStorage 
 form = cgi.FieldStorage() 
 
 # Get data from SQL file
-with open('sql/q1.sql', 'r') as myfile:
+with open('sql/q2.sql', 'r') as myfile:
     query=myfile.read()
-
-
 
 print """
 <!-- An input form for a SQL Query -->
@@ -76,48 +74,54 @@ print """
 
 
 # Open database connection
-db = MySQLdb.connect("localhost","user","user-123","dbms_p" )
+db = mysql.connector.connect(host="localhost",user="user",password="user-123",database="dbms_p" )
 
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
 
-# execute SQL query using execute() method.
-cursor.execute(query)
-
-# fetch all of the rows from the query
-data = cursor.fetchall ()
-
-# fetch the column names
-headers = [header[0] for header in cursor.description]
-
 
 # print the rows and colums
-print """<div class="col-lg-12">"""
-print """<table class="table table-hover">"""
-print "<thead>"
-for w in range(len(headers)):
-    print "<th>"
-    print headers[w]
-    print "</th>"
-print "</thead>"
+try:
+    # execute SQL query using execute() method.
+    cursor.execute(query)
 
-print "<tbody>"
-for x in range(len(data)):
-    print "<tr>"    
-    for y in range(len(data[x])):
-        
-        print "<td>"
-        print data[x][y]
-        print "</td>"
-    print "</tr>"
+    # fetch all of the rows from the query
+    data = cursor.fetchall ()
 
-print """</tbody></table>"""
-print "</div>"
+    # fetch the column names
+    headers = [header[0] for header in cursor.description]    
+    print """<div class="col-lg-12">"""
+    print """<table class="table table-hover">"""
+    print "<thead>"
+    for w in range(len(headers)):
+        print "<th>"
+        print headers[w]
+        print "</th>"
+    print "</thead>"
 
+    print "<tbody>"
+    for x in range(len(data)):
+        print "<tr>"    
+        for y in range(len(data[x])):
+            
+            print "<td>"
+            print data[x][y]
+            print "</td>"
+        print "</tr>"
 
+    print """</tbody></table>"""
+    print "</div>"
 
-
-
+except mysql.connector.Error as err:
+    print """
+        <div class="col-lg-12">
+        <div class="alert alert-danger" role="alert">
+        """
+    print "<strong>Something went wrong:</strong> {}".format(err)
+    print """
+        </div>
+        </div>
+        """
 # disconnect from server
 db.close()
 
