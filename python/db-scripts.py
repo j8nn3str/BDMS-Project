@@ -47,7 +47,7 @@ print '</nav>'
 
 print """
 <div class="col-lg-12">
-  <form class="form-inline" action="python/db-scripts.py" method="POST">
+  <form class="form-inline" action="db-scripts.py" method="POST">
     <div class="form-group">
       <label for="sql-action-select">Select a database operation:</label>
       <select class="form-control" id="sql-action-select" name="value">
