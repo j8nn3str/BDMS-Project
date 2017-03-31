@@ -6,7 +6,7 @@ WHERE sell.ticker="AAPL"
 and sell.buy_or_sell="SELL" 
 and buy.buy_or_sell="BUY"
 and buy.ticker IN (
-    SELECT ticker
+    SELECT DISTINCT ticker
     FROM stock
     WHERE exchange="NASDAQ"
 )

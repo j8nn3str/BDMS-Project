@@ -1,13 +1,27 @@
-SELECT DISTINCT ad2.ticker, ad2.close-ad1.close as difference
-FROM price as ad1, price as ad2, price as bd1, price as bd2
-WHERE ad1.date="2017-03-20" and ad2.date="2017-03-21"
-and ad1.ticker=ad2.ticker and  ad1.ticker=bd1.ticker and ad1.ticker=bd2.ticker
-and bd1.date=ad1.date and bd2.date=ad2.date
-and ad2.close-ad1.close NOT IN (
-    SELECT ad2.close-ad1.close
-    FROM price as ad1, price as ad2, price as bd1, price as bd2
-    WHERE ad1.date="2017-03-20" and ad2.date="2017-03-21"
-    and ad1.ticker=ad2.ticker and  ad1.ticker=bd1.ticker 
-    and ad1.ticker=bd2.ticker
-        and ad2.close-ad1.close < bd2.close-bd1.close
+SELECT DISTINCT d1.ticker, d2.close as "03/22 Close", d1.close as "03/21 Close", max(d2.close - d1.close) as "max difference"
+FROM price as d1, price as d2
+WHERE 
+    d1.date = "2017-03-20" and d2.date = "2017-03-21"
+and d1.ticker = d2.ticker    
+and d1.ticker IN (
+        SELECT DISTINCT ticker
+        FROM price
+        WHERE close > 100
+        and date >= "2017-01-01" and date < "2018-01-01"
+        and ticker IN (
+            SELECT DISTINCT ticker
+            FROM stock
+            WHERE exchange = "NYSE"
+        )
+)
+and d2.ticker IN (
+        SELECT DISTINCT ticker
+        FROM price
+        WHERE close > 100
+        and date >= "2017-01-01" and date < "2018-01-01"    
+        and ticker IN (
+            SELECT DISTINCT ticker
+            FROM stock
+            WHERE exchange = "NYSE"
+        )        
 )
