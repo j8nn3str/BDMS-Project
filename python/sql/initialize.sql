@@ -1,7 +1,6 @@
 CREATE TABLE IF NOT EXISTS stock (
-        ticker VARCHAR(10),
-        exchange VARCHAR(15),
-        PRIMARY KEY (ticker)
+        ticker VARCHAR(10) PRIMARY KEY,
+        exchange VARCHAR(15)
         );
 INSERT INTO stock
   (ticker, exchange)
@@ -11,7 +10,9 @@ VALUES
 CREATE TABLE IF NOT EXISTS price (
     ticker VARCHAR(10),
     date DATE,
-    close DECIMAL(13,2)   
+    close DECIMAL(13,2),
+    PRIMARY KEY (ticker, date, close),
+    FOREIGN KEY (ticker) REFERENCES stock(ticker)
 );
 INSERT INTO price
         (ticker, date, close)
@@ -24,9 +25,14 @@ VALUES
 ("IBM", "2017-03-21",   70.00), ("IBM", "2017-03-22",   10.00);
         
 CREATE TABLE IF NOT EXISTS buynsell (
-        buy_or_sell varchar(4), ticker VARCHAR(10),
-        date DATE, timestamp TIME,
-        price DECIMAL(13,2),  num_of_shares INT UNSIGNED
+        buy_or_sell varchar(4),
+        ticker VARCHAR(10),
+        date DATE,
+        timestamp TIME,
+        price DECIMAL(13,2),
+        num_of_shares INT UNSIGNED,
+        FOREIGN KEY (ticker) REFERENCES stock(ticker)
+
  );
 INSERT INTO buynsell
         (ticker, buy_or_sell, date, timestamp, price, num_of_shares)
