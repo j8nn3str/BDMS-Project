@@ -1,6 +1,5 @@
-SELECT DISTINCT sell.buy_or_sell,sell.ticker,sell.date, 
-sell.price*sell.num_of_shares as sell_total_price, 
-buy.buy_or_sell,buy.ticker, buy.price*buy.num_of_shares as buy_total_price
+SELECT DISTINCT sell.date, sell.price*sell.num_of_shares as "AAPL total sell price", 
+buy.ticker, buy.price*buy.num_of_shares as "total buy price"
 FROM buynsell as sell, buynsell as buy
 WHERE sell.ticker="AAPL" 
 and sell.buy_or_sell="SELL" 
@@ -11,3 +10,4 @@ and buy.ticker IN (
     WHERE exchange="NASDAQ"
 )
 and sell.price*sell.num_of_shares > buy.price*buy.num_of_shares
+and buy.date = sell.date
