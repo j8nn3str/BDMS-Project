@@ -1,13 +1,16 @@
-SELECT DISTINCT sell.date, sell.price*sell.num_of_shares as "AAPL total sell price", 
-buy.ticker, buy.price*buy.num_of_shares as "total buy price"
-FROM buynsell as sell, buynsell as buy
-WHERE sell.ticker="AAPL" 
-and sell.buy_or_sell="SELL" 
-and buy.buy_or_sell="BUY"
-and buy.ticker IN (
+SELECT DISTINCT 
+s.date, s.ticker, s.price*s.num_of_shares as "AAPL total sell price",
+b.date, sum(b.price*b.num_of_shares) as "daily sum NASDAQ total buy price"
+FROM buynsell as b, buynsell as s
+WHERE b.buy_or_sell = "BUY"
+and NOT (b.ticker = "AAPL")
+and b.ticker IN (
     SELECT DISTINCT ticker
     FROM stock
-    WHERE exchange="NASDAQ"
+    WHERE exchange = "NASDAQ"
 )
-and sell.price*sell.num_of_shares > buy.price*buy.num_of_shares
-and buy.date = sell.date
+and s.buy_or_sell = "SELL"
+and s.ticker="AAPL"
+and b.date = s.date
+GROUP BY b.date, s.date, s.price, s.num_of_shares
+HAVING sum(b.price*b.num_of_shares) < s.price*s.num_of_shares
